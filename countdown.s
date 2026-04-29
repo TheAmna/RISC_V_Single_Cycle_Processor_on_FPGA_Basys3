@@ -1,4 +1,3 @@
-# Register Map:
 #   x6  - switch value read / temp
 #   x7  - countdown counter
 #   x8  - switch base address  (0x300 = 768)
@@ -14,7 +13,6 @@ WAIT:
 WAIT_POLL:
     lw   x6, 0(x8)          # read switches into x6
     beq  x6, x0, WAIT_POLL  # if zero, keep polling
-
     # non-zero detected
     sw   x6, 0(x9)          # show initial value on LEDs
     addi x7, x6, 0          # x7 = counter = switch value
