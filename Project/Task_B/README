@@ -1,0 +1,13 @@
+restart
+add_wave /tb_PartB/uut/PC
+add_wave /tb_PartB/uut/PCSrc
+add_wave /tb_PartB/uut/Jump
+add_wave /tb_PartB/uut/JumpReg
+add_wave /tb_PartB/uut/u_regfile/regs[3]
+add_wave /tb_PartB/uut/u_regfile/regs[4]
+add_wave /tb_PartB/uut/u_regfile/regs[5]
+add_wave /tb_PartB/uut/u_regfile/regs[6]
+add_wave /tb_PartB/uut/u_regfile/regs[7]
+add_wave /tb_PartB/uut/u_regfile/regs[9]
+add_wave /tb_PartB/uut/u_regfile/regs[10]
+run 500 ns
