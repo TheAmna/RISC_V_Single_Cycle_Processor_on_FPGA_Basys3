@@ -1,3 +1,4 @@
+
 # EE-CS-371-330-Computer-Architecture-Lab-Project
 
 ## Team Members 
@@ -6,7 +7,27 @@
   
 ## Project Overview
 
-Demonstrating a countdown and fibonacci sequence on the RISC V processor made in labs on the Digilent BASYS 3 FPGA (Field Programmble Gateway array). 
+Demonstrating a countdown and fibonacci sequence on the RISC V processor made in labs on the Digilent BASYS 3 FPGA (Field Programmble Gateway array).
+
+## Instructions Implemented
+The following RISC-V instructions are supported by the processor:
+
+**R-Type** (register-register operations)
+- ADD, SUB, AND, OR, XOR, SLL, SRL, SLT
+
+**I-Type** (immediate operations)
+- ADDI, ANDI, ORI, XORI, SLLI, SRLI
+- LW, LH, LB (load instructions)
+- JALR (jump and link register)
+
+**S-Type** (store instructions)
+- SW, SH, SB
+
+**B-Type** (branch instructions)
+- BEQ, BNE, BLT, BGE
+
+**J-Type** (jump instructions)
+- JAL (jump and link)
 
 
 
@@ -21,9 +42,21 @@ https://github.com/user-attachments/assets/c77e835b-abad-45af-859b-419cc19354fd
 ## Part C Demo
 
 
+https://github.com/user-attachments/assets/5ff5fcd3-4ec1-4011-bf1c-db4a26b39de0
+
+
 ## Challenges
 
-1. The biggest challenge was getting the ti,ing signals right for the demonstartion on the FPGA BASYS 3. We worked on another porject that just required pipelining the processor and verifying through simulaton. SO the timing was not a problem but here we had to synchronise everything with the clock signals and the clock frequency of the basys 3 which is 100 MHZ.
+1. The biggest challenge was getting the timing signals right for the demonstration on the FPGA BASYS 3. We worked on another project that just required pipelining the processor and verifying through simulaton. So the timing was not a problem but here we had to synchronise everything with the clock signals and the clock frequency of the basys 3 which is 100 MHZ.
+   
+2. Another key challenge was implementing memory mapped input ouput through 
+the Address Decoder. Unlike CISC architectures where instructions can 
+directly operate on memory through dedicated I/O instructions, RISC-V 
+uses a Load/Store architecture. Only LW and SW address the memory, with 
+everything else operating purely on registers. This meant we could map 
+peripherals directly into the memory address space and use the same SW 
+and LW instructions to talk to LEDs, switches and RAM. The Address Decoder sits between the CPU and all peripherals, routing each transaction based on bits[9:8] of the address. 0x000-0x1FF for 
+Data Memory, 0x200-0x2FF for LEDs, and 0x300-0x3FF for Switches.In decimals address 0-512 is Data Memory, 512-786 is LED's (Read Only) and 786-1024 represents SWICTHES (Write only).
 
 
 
